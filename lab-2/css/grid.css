@@ -1,0 +1,162 @@
+:root {
+  --bg-page: #e3e3e3;
+  --text: #0f172a;
+
+  --header: #f49c11;
+  --header-text: #ffffff;
+
+  --nav: #2980b9;
+  --nav-text: #ffffff;
+
+  --panel: #f4f4f4;
+  --side-panel: #d4efdf;
+  --footer: #27ae60;
+  --footer-text: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+header,
+nav,
+main,
+aside,
+footer {
+  padding: 16px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+header {
+  background: var(--header);
+  color: var(--header-text);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+header .logo {
+  font-size: 16px;
+  background-color: var(--panel);
+  color: #616161;
+  padding: 10px 16px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+header .logo::before {
+  content: 'Logo';
+  margin-left: 8px;
+  color: #616161;
+  font-weight: bold;
+}
+
+nav {
+  background: var(--nav);
+  color: var(--nav-text);
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-block: 12px;
+}
+nav a {
+  color: var(--nav-text);
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 10px 14px;
+  font-weight: bold;
+}
+nav a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+main {
+  background: var(--panel);
+}
+aside {
+  background: var(--side-panel);
+  display: flex;
+  flex-direction: column;
+}
+aside > div {
+  margin-top: auto;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  font-size: 22px;
+}
+aside > div span {
+  flex: 0 0 auto;
+  padding: 10px;
+  font-size: 60px;
+}
+
+footer {
+  background: var(--footer);
+  color: var(--footer-text);
+  text-align: center;
+  font-weight: 600;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      'header header'
+      'nav nav'
+      'main aside'
+      'footer footer';
+    max-width: 1200px;
+    margin-inline: auto;
+    min-height: 100vh;
+  }
+  header {
+    grid-area: header;
+  }
+  nav {
+    grid-area: nav;
+    justify-content: flex-start;
+    overflow: visible;
+  }
+  main {
+    grid-area: main;
+  }
+  aside {
+    grid-area: aside;
+    display: block;
+  }
+  footer {
+    grid-area: footer;
+  }
+
+  aside > div {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+    overflow: visible;
+  }
+  aside > div span {
+    width: 100%;
+    font-size: 60px;
+    padding: 5px;
+  }
+}
