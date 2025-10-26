@@ -1,0 +1,198 @@
+:root {
+  --main-color: #1e64c8;
+  --accent-color: #1e64c8;
+  --border-color: #1e64c8;
+  --image: url('../images/polo_b.png');
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f0f0f0;
+  padding: 40px 30px;
+  gap: 30px;
+  justify-content: center;
+  align-items: stretch;
+  width: min(100% - 40px, 1000px);
+  border-radius: 10px;
+  font-size: 1rem;
+  min-height: 550px;
+}
+
+.image {
+  flex: 1 1 500px;
+  max-width: 500px;
+  aspect-ratio: 1 / 1;
+  background: var(--image) center/contain no-repeat;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  background-color: white;
+}
+
+.details {
+  flex: 0 0 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.top-info {
+  margin-top: 0;
+}
+
+h2 {
+  margin: 0 0 8px 0;
+}
+
+.promo {
+  background: var(--accent-color);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 6px 12px;
+  margin-left: 8px;
+}
+
+p {
+  margin: 0;
+}
+
+.option-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content; /* lub np. 240px dla stałej szerokości */
+}
+
+.middle {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.section-title {
+  font-weight: bold;
+  font-size: 1.6rem;
+  margin: 15px 0 8px 0;
+}
+
+input[type='radio'] {
+  display: none;
+}
+
+.colors {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.colors label {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #555;
+  cursor: pointer;
+}
+
+#blue:checked ~ .card .colors label[for='blue'],
+#red:checked ~ .card .colors label[for='red'],
+#green:checked ~ .card .colors label[for='green'],
+#yellow:checked ~ .card .colors label[for='yellow'] {
+  transform: scale(0.85);
+  border-color: #555;
+}
+
+.sizes {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.sizes label {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  background: white;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#size-s:checked ~ .card .sizes label[for='size-s'],
+#size-m:checked ~ .card .sizes label[for='size-m'],
+#size-l:checked ~ .card .sizes label[for='size-l'],
+#size-xl:checked ~ .card .sizes label[for='size-xl'] {
+  background: var(--main-color);
+  color: white;
+}
+
+.price {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.btn {
+  width: 70%;
+  padding: 20px 0;
+  background: var(--main-color);
+  color: white;
+  border: 2px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+#blue:checked ~ .card {
+  --main-color: #1e64c8;
+  --accent-color: #1e64c8;
+  --border-color: #1e64c8;
+  --image: url('../images/polo_b.png');
+}
+
+#red:checked ~ .card {
+  --main-color: #d32f2f;
+  --accent-color: #d32f2f;
+  --border-color: #d32f2f;
+  --image: url('../images/polo_r.png');
+}
+
+#green:checked ~ .card {
+  --main-color: #2e7d32;
+  --accent-color: #2e7d32;
+  --border-color: #2e7d32;
+  --image: url('../images/polo_g.png');
+}
+
+#yellow:checked ~ .card {
+  --main-color: #f9b000;
+  --accent-color: #f9b000;
+  --border-color: #f9b000;
+  --image: url('../images/polo_y.png');
+}
