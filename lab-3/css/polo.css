@@ -75,7 +75,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: fit-content; /* lub np. 240px dla stałej szerokości */
+  width: fit-content;
 }
 
 .middle {
@@ -147,6 +147,8 @@ input[type='radio'] {
 #size-xl:checked ~ .card .sizes label[for='size-xl'] {
   background: var(--main-color);
   color: white;
+  transform: scale(0.9);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .price {
@@ -167,6 +169,10 @@ input[type='radio'] {
   font-weight: bold;
   margin-bottom: 0;
   text-align: center;
+}
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 #blue:checked ~ .card {
@@ -195,4 +201,18 @@ input[type='radio'] {
   --accent-color: #f9b000;
   --border-color: #f9b000;
   --image: url('../images/polo_y.png');
+}
+
+.colors label,
+.sizes label,
+.btn {
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.colors label:hover,
+.sizes label:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border-color: var(--main-color);
 }
