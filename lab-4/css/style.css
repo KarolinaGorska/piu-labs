@@ -1,19 +1,141 @@
-/* Minimalny reset  */
-html {
-  font-size: 16px; /* bazowy rozmiar czcionki */
-  font-family: system-ui, sans-serif; /* font systemowy */
-  line-height: 1.5; /* lepsza czytelność */
-}
-body {
-  margin: 1rem;
-  padding: 0;
+:root {
+  --pink: #ffd6e0;
+  --mint: #d6fff5;
+  --lavender: #e8d6ff;
+  --butter: #fff7c2;
+  --white: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --text: #444;
 }
 
-a {
-  color: #0066cc; /* niebieski kolor linków */
-  text-decoration: none; /* bez podkreślenia */
-  font-size: 1.4rem;
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fff6f9, #f3f8ff);
+  color: var(--text);
+  text-align: center;
+  padding: 30px;
+  margin: 0;
 }
-a:hover {
-  text-decoration: underline; /* podkreślenie przy najechaniu */
+
+h1 {
+  margin-bottom: 25px;
+  color: #7a6dbb;
+}
+
+#kanban {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.column {
+  background: var(--white);
+  border-radius: 25px;
+  padding: 15px;
+  width: 30%;
+  min-width: 250px;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.column h2 {
+  background: linear-gradient(90deg, var(--lavender), var(--mint));
+  border-radius: 20px;
+  padding: 6px 0;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  color: #5b4a89;
+}
+
+.cards {
+  min-height: 180px;
+  padding: 10px;
+}
+
+.card {
+  border-radius: 20px;
+  margin: 10px 0;
+  padding: 10px;
+  text-align: left;
+  position: relative;
+  box-shadow: 0 3px 8px var(--shadow);
+  font-size: 0.95em;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card .content {
+  outline: none;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.controls button {
+  border: none;
+  background: #ffffffaa;
+  border-radius: 12px;
+  padding: 4px 6px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 2px 5px var(--shadow);
+  transition: 0.2s;
+}
+
+.controls button:hover {
+  transform: scale(1.1);
+  background: #fff;
+}
+
+.delete {
+  color: #ff5c5c;
+}
+
+.move-left,
+.move-right {
+  color: #7a6dbb;
+}
+
+.color-card {
+  color: #444;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.buttons button {
+  background: linear-gradient(135deg, var(--mint), var(--lavender));
+  border: none;
+  border-radius: 20px;
+  padding: 8px;
+  cursor: pointer;
+  color: #5b4a89;
+  box-shadow: 0 3px 8px var(--shadow);
+  transition: 0.2s;
+}
+
+.buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 900px) {
+  #kanban {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .column {
+    width: 90%;
+  }
 }
