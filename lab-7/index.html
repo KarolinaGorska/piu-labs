@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 7</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <h1>Lab-7</h1>
+
+    <div class="products-grid">
+      <product-card>
+        <span slot="promo">Hit Sezonu</span>
+        <img
+          slot="image"
+          src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&q=80"
+          alt="Koszula"
+        />
+        <span slot="name">Koszula Lniana Premium</span>
+        <span slot="price">149.00 PLN</span>
+        <div slot="colors">
+          <strong>Kolory:</strong>
+          <ul class="product-list">
+            <li>Biały</li>
+            <li>Beżowy</li>
+          </ul>
+        </div>
+        <div slot="sizes">Rozmiary: M, L, XL</div>
+      </product-card>
+
+      <product-card>
+        <img
+          slot="image"
+          src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80"
+          alt="Buty"
+        />
+        <span slot="name">Nike Air Runner</span>
+        <span slot="price">399.99 PLN</span>
+        <div slot="sizes">Dostępne: 42, 43, 44</div>
+      </product-card>
+
+      <product-card>
+        <span slot="promo" style="background: black">-50%</span>
+        <img
+          slot="image"
+          src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&q=80"
+          alt="Sweter"
+        />
+        <span slot="name">Sweter Wełniany</span>
+        <span slot="price"><s style="color: #aaa">200</s> 100 PLN</span>
+        <div slot="colors">Kolor: Czerwony</div>
+      </product-card>
+
+      <product-card>
+        <img
+          slot="image"
+          src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&q=80"
+          alt="T-shirt"
+        />
+        <span slot="name">Basic Black Tee</span>
+        <span slot="price">49.00 PLN</span>
+      </product-card>
+
+      <product-card>
+        <span slot="promo">Nowość</span>
+        <img
+          slot="image"
+          src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&q=80"
+          alt="Okulary"
+        />
+        <span slot="name">Okulary Przeciwsłoneczne</span>
+        <span slot="price">89.00 PLN</span>
+        <div slot="sizes">Rozmiar: Uniwersalny</div>
+      </product-card>
+
+      <product-card>
+        <span slot="promo" style="background-color: #333">Klasyk</span>
+        <img
+          slot="image"
+          src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=400&q=80"
+          alt="Kurtka Skórzana"
+        />
+        <span slot="name">Kurtka Ramoneska</span>
+        <span slot="price">599.00 PLN</span>
+        <div slot="sizes">Rozmiary: L, XL</div>
+      </product-card>
+    </div>
+  </body>
+</html>
