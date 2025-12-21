@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Koszula Lniana Premium",
+    "price": 149.0,
+    "image": "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&q=80",
+    "promo": "Hit Sezonu"
+  },
+  {
+    "id": 2,
+    "name": "Nike Air Runner",
+    "price": 399.99,
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80"
+  },
+  {
+    "id": 3,
+    "name": "Sweter Wełniany",
+    "price": 100.0,
+    "image": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&q=80",
+    "promo": "-50%"
+  },
+  {
+    "id": 4,
+    "name": "Basic Black Tee",
+    "price": 49.0,
+    "image": "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&q=80"
+  },
+  {
+    "id": 5,
+    "name": "Okulary Przeciwsłoneczne",
+    "price": 89.0,
+    "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&q=80",
+    "promo": "Nowość"
+  },
+  {
+    "id": 6,
+    "name": "Kurtka Ramoneska",
+    "price": 599.0,
+    "image": "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=400&q=80",
+    "promo": "Klasyk"
+  }
+]

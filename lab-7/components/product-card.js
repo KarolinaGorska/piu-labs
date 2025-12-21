@@ -5,57 +5,36 @@ template.innerHTML = `
       display: flex;
       flex-direction: column;
       width: 100%;
-      max-width: 320px;
       background-color: #fff;
       border: 1px solid #ddd;
       border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      font-family: inherit;
+      transition: transform 0.2s;
     }
-
-    :host(:hover) {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-    }
-
+    :host(:hover) { transform: translateY(-5px); }
+    
     .image-wrapper {
       position: relative;
-      width: 100%;
-      height: 280px;
+      height: 200px;
       background-color: #f9f9f9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
     }
-
-    ::slotted(img) {
+    img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s;
     }
-
     .promo-badge {
       position: absolute;
-      top: 10px;
-      right: 10px;
-      z-index: 2;
-    }
-
-    ::slotted([slot="promo"]) {
+      top: 10px; right: 10px;
       background-color: #e63946;
       color: white;
       padding: 5px 12px;
       border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      font-size: 0.8rem;
+      display: none; /* Domyślnie ukryte */
     }
-
     .content {
       padding: 16px;
       display: flex;
@@ -63,86 +42,82 @@ template.innerHTML = `
       flex-grow: 1;
       gap: 10px;
     }
-
-    h2 {
-      margin: 0;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #1d3557;
-      line-height: 1.4;
-    }
-
-    .price {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #457b9d;
-    }
-
-    .options {
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    ::slotted(ul) {
-      margin: 5px 0 0 0;
-      padding-left: 20px;
-    }
-
+    h2 { margin: 0; font-size: 1.1rem; color: #1d3557; }
+    .price { font-size: 1.25rem; font-weight: 700; color: #457b9d; }
     .btn-cart {
       margin-top: auto;
       background-color: #1d3557;
       color: white;
       border: none;
-      padding: 12px;
+      padding: 10px;
       border-radius: 4px;
       cursor: pointer;
-      font-weight: 600;
       text-transform: uppercase;
-      font-size: 0.9rem;
-      transition: background 0.2s;
-      width: 100%;
+      font-weight: bold;
     }
-
-    .btn-cart:hover {
-      background-color: #457b9d;
-    }
+    .btn-cart:hover { background-color: #457b9d; }
   </style>
 
   <div class="image-wrapper">
-    <div class="promo-badge">
-        <slot name="promo"></slot>
-    </div>
-    <slot name="image">
-        <span style="color:#bbb">Brak zdjęcia</span>
-    </slot>
+    <div class="promo-badge" id="promo"></div>
+    <img id="image" src="" alt="Produkt" />
   </div>
-
   <div class="content">
-    <h2>
-      <slot name="name">Nazwa produktu</slot>
-    </h2>
-
-    <div class="price">
-      <slot name="price">-</slot>
-    </div>
-
-    <div class="options">
-      <slot name="colors"></slot>
-    </div>
-
-    <div class="options">
-      <slot name="sizes"></slot>
-    </div>
-
-    <button class="btn-cart">Do koszyka</button>
+    <h2 id="name"></h2>
+    <div class="price" id="price"></div>
+    <button class="btn-cart" id="btn">Do koszyka</button>
   </div>
 `;
 
 export default class ProductCard extends HTMLElement {
     constructor() {
         super();
-        const shadow = this.attachShadow({ mode: 'open' });
-        shadow.appendChild(template.content.cloneNode(true));
+        this.attachShadow({ mode: 'open' });
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
+        this._data = null;
+    }
+
+    connectedCallback() {
+        this.shadowRoot.getElementById('btn').addEventListener('click', () => {
+            if (this._data) {
+                this.dispatchEvent(
+                    new CustomEvent('add-to-cart', {
+                        detail: this._data,
+                        bubbles: true,
+                        composed: true,
+                    })
+                );
+            }
+        });
+    }
+
+    set data(value) {
+        this._data = value;
+        this.render();
+    }
+
+    get data() {
+        return this._data;
+    }
+
+    render() {
+        if (!this._data) return;
+
+        const { name, price, image, promo } = this._data;
+
+        this.shadowRoot.getElementById('name').textContent = name;
+        this.shadowRoot.getElementById('price').textContent = `${price.toFixed(
+            2
+        )} PLN`;
+        this.shadowRoot.getElementById('image').src = image;
+
+        const promoEl = this.shadowRoot.getElementById('promo');
+        if (promo) {
+            promoEl.textContent = promo;
+            promoEl.style.display = 'block';
+        } else {
+            promoEl.style.display = 'none';
+        }
     }
 }
 
